@@ -13,7 +13,8 @@ find = {}  # Scan the project directory with the default parameters
 name = "ActWalkEst"
 version = "0.0.1"
 authors = [
-  { name="Meet Mevada,Prakyath Kanthraju", email="mevadameet95@gmail.com,paknth3@uic.edu" },
+  { name="Meet Mevada", email="mevadameet95@gmail.com" },
+  {name="Prakyath Kanthraju",email="paknth3@uic.edu"}
 ]
 description = "Sample project for medium article"
 readme = "README.md"
