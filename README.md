@@ -3,6 +3,7 @@
 - This library contain modules for activity detection (Standing,Walking,Running and Squatting) along with Walking speed Estimation. 
 - The module that connects and run polar is polar.run.start
 - The module that runs the prediction scripts and GUI is main.run.start
+- Working on adding more walking speed estimation models and model comparision GUI.
 
 
 # Installation and Running
