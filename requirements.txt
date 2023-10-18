@@ -1,0 +1,9 @@
+numpy
+matplotlib
+scikit-learn
+scipy
+pylsl
+pyqt5
+torch==2.0.0
+bleak
+pyyaml

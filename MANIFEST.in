@@ -1,0 +1,4 @@
+include ActWalkEst/resources/* .h5
+include ActWalkEst/resources/* .pickle
+include ActWalkEst/resources/* .jpg
+include ActWalkEst/resources/* .yml
