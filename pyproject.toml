@@ -16,6 +16,6 @@ authors = [
   { name="Meet Mevada", email="mevadameet95@gmail.com" },
   {name="Prakyath Kanthraju",email="paknth3@uic.edu"}
 ]
-description = "Sample project for medium article"
+description = "Activity And Walking speed estimation using PolatH10"
 readme = "README.md"
 requires-python = ">=3.8"
