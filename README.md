@@ -5,8 +5,8 @@
 - The module that runs the prediction scripts and GUI is main.run.start 
 - Running main.run.start also creates two pylsl streams , one for Activity Estimation and one for Walking speed estimation
 - Currently Walking Estimation supports 2 different deep learning architecture 
-    1. Self - Attention
-    2. Vanilla CNN
+    1. ![Self - Attention](Merged2.jpg)
+    2. ![Vanilla CNN](Merged.jpg)
     - with two different input length (0.5 s data, 1 s data) and two different acceleration combinations (Vertical only, Vertical and lateral)
 - Working on adding more walking speed estimation models and model comparision GUI.
 
