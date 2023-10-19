@@ -23,7 +23,7 @@ class Attention(nn.Module):
 
 
 class CNN(nn.Module):
-    def __init__(self,input_features=1,input_lengt=200,num_classes=1):
+    def __init__(self,input_features=2,input_lengt=200,num_classes=1):
         super(CNN,self).__init__()
         self.input_features=input_features
         self.input_length=input_lengt
@@ -44,6 +44,7 @@ class CNN(nn.Module):
         self.dense1=nn.Linear(in_features=8192,out_features=512)
         self.dense2=nn.Linear(in_features=512,out_features=num_classes)
 
+        """
         # To save the extracted features
         self.f_conv1=None
         self.f_conv2=None
@@ -53,41 +54,42 @@ class CNN(nn.Module):
         self.f_attention1=None
         self.f_attention2=None
         self.f_attention3=None
+        """
 
     def forward(self,x):
         x=self.conv1(x)
         x=self.batchnorm1(x)
         x=self.relu1(x)
         x=self.dropout1(x)
-        self.f_conv1=x
+        #self.f_conv1=x
 
         x=self.conv2(x)
         x=self.batchnorm2(x)
         x=self.relu1(x)
         x=self.dropout1(x)
-        self.f_conv2=x
+        #self.f_conv2=x
 
         x1=self.attention1(x)
         x1=torch.bmm(x,x1)
-        self.f_attention1=x1
+        #self.f_attention1=x1
 
         x=self.conv3(x)
         x=self.batchnorm3(x)
         x=self.relu1(x)
-        self.f_conv3=x
+        #self.f_conv3=x
 
         x2=self.attention2(x)
         x2=torch.bmm(x,x2)
-        self.f_attention2=x2
+        #self.f_attention2=x2
 
         x=self.conv4(x)
         x=self.batchnorm4(x)
         x=self.relu1(x)
-        self.f_conv4=x
+        #self.f_conv4=x
 
         x3=self.attention3(x)
         x3=torch.bmm(x,x3)
-        self.f_attention3=x3
+        #self.f_attention3=x3
         #x=torch.flatten(x,start_dim=1)
         x1,x2,x3=torch.flatten(x1,start_dim=1),torch.flatten(x2,start_dim=1),torch.flatten(x3,start_dim=1)
         x=torch.cat((x1,x2,x3),dim=1)

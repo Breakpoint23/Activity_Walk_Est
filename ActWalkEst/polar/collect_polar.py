@@ -5,6 +5,7 @@ from importlib import resources
 
 
 from ActWalkEst.polar.polar import Polar
+from ActWalkEst.polar.search_polar import run
 
 
 
@@ -12,6 +13,7 @@ def start_polar(address):
     """
     Start the Polar data collection.
     """
+    
     polar_inst=Polar(address)
     # start the Polar data collection
     # polar(polar_address)

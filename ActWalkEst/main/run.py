@@ -5,6 +5,8 @@ import pylsl
 import sys,os
 import pickle
 
+from pylsl import StreamInfo,StreamOutlet
+
 from ActWalkEst.SpeedEst.prediction import Prediction as Walking_Prediction
 from ActWalkEst.ActivityRec.prediction import prediction as Activity_Prediction
 
@@ -24,6 +26,10 @@ class App():
         self.walking=self.ui.label_5
         self.running=self.ui.label_7
         self.label_list=[self.running,self.walking,self.standing,self.squatting]
+        self.act_info=StreamInfo('Activity','Marker',1,0,'float32')
+        self.act_outlet=StreamOutlet(self.act_info)
+        self.speed_info=StreamInfo('Speed Estimation','Marker',1,0,'float32')
+        self.speed_out=StreamOutlet(self.speed_info)
         for label in self.label_list:
             label.setStyleSheet("background-color: red")
 
@@ -75,8 +81,10 @@ class App():
                 return None
             self.first_flag=False
         act_index=self.act_out()
+        self.act_outlet.push_sample([act_index])
         speed=self.walking_pred.output(self.walking_pred.model,self.walking_pred.normalizer,self.walking_pred.acquisition,act_index)
         self.walk_buffer.append(speed)
+        self.speed_out.push_sample([speed])
         self.ui.figure1.clear()
         ax=self.ui.figure1.add_subplot(111)
         ax.plot(self.walk_buffer[-15:])
