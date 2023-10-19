@@ -20,7 +20,7 @@ class Prediction():
         self.buffer=[]
         self.filtered_buffer=[]
         self.walking_index=walking_index
-
+        self.device=torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.MODEL_STRING=""" Select the Walking Speed Estimation model\n
         press, \n
         1 for Self Attention with vertical and lateral acc (1 s)\n
@@ -120,8 +120,10 @@ class Prediction():
         return data
     
     def predict(self,model,data):
+        data=data.from_numpy(data).float()
+        data=data.to(self.device)
         with torch.no_grad():
-            pred=model.forward_run(data)
+            pred=model.forward(data)
         return pred.item()
     
     def round_nearest(self,x,a=0.01):
