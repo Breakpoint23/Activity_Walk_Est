@@ -15,10 +15,12 @@ from ActWalkEst.utils.lsl_imu import DataInlet,SetupStreams
 
 class prediction():
     def __init__(self, slider):
-        input_size = 3 
-        hidden_size = 100
-        num_classes = 5
-        dropout_rate= 0.3
+
+
+        input_size = 3 #  Number of Acceleration axis
+        hidden_size = 100 # Window lenght (data points)
+        num_classes = 5 # number of activities to be classified
+        dropout_rate= 0.3 
         self.prev_flag = False
         self.device = torch.device('cpu')
         self.Activity_condition = {'RUNNING':0,
@@ -41,7 +43,7 @@ class prediction():
 
         self.model = model
 
-        self.acquisition = SetupStreams()
+        self.acquisition = SetupStreams() # Object to get data from polar pylsl stream
         self.first_flag = True
         # acquisition
         # sys.exit()
